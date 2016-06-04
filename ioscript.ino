@@ -79,6 +79,15 @@ void loop() {
     }
 
     if (matched) Serial.write('.');
-    else if (c != IGNORE_CHAR) Serial.write('?');
+    else {
+      switch (c) {
+        case ' ':
+        case '\t':
+        case IGNORE_CHAR:
+          break;
+        default:
+          Serial.print('?');
+      }
+    }
   }
 }
